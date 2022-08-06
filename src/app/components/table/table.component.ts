@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Observable } from 'rxjs';
 
 export interface UserData {
   id: string;
@@ -21,6 +23,7 @@ const FRUITS: string[] = [
   'pomegranate',
   'pineapple',
 ];
+
 const NAMES: string[] = [
   'Maia',
   'Asher',
@@ -47,7 +50,7 @@ const NAMES: string[] = [
  * @title Data table with sorting, pagination, and filtering.
  */
 @Component({
-  selector: 'table-component',
+  selector: 'data-table',
   styleUrls: ['table.component.scss'],
   templateUrl: 'table.component.html',
 })
@@ -58,7 +61,7 @@ export class TableComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor() {
+  constructor(private dataService: DataService) {
     // Create 100 users
     const users = Array.from({ length: 100 }, (_, k) => createNewUser(k + 1));
 
@@ -66,7 +69,13 @@ export class TableComponent implements AfterViewInit {
     this.dataSource = new MatTableDataSource(users);
   }
 
-  ngAfterViewInit() {
+  ngOnInit(): void {
+    this.dataService.getJSON().subscribe((response) => {
+      console.log(response);
+    });
+  }
+
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
