@@ -1,1 +1,1 @@
-<h1 align="center">Apteco Front End Challenge</h1>
+<h1 align="center">Apteco Front End Project</h1>
