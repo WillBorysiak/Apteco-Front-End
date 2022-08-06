@@ -1,11 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~normalize.css";
 
-html,
+html {
+  background: rgb(2, 149, 151);
+  background: radial-gradient(
+    circle,
+    rgba(2, 149, 151, 1) 0%,
+    rgba(7, 110, 95, 1) 100%
+  );
+  height: 100%;
+}
+
 body {
   height: 100%;
-  margin: 0;
-  padding: 0;
-}
-body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
