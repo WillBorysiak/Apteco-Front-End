@@ -42,6 +42,7 @@ This will be a log of all the actions / steps I have taken to complete the proje
 - I have now created a fully operational table component using the correct Material modules, my next tasks is working out how to add the JSON data to the table.
 - I have used an angular service to get the data from the static JSON file and supply that data to my app.component.ts.
 - I then used the @Input decorator to pass the data into the table component so I can access/process it into the mat-table.
+- Once the data was present I could run a function called createTableData() which contains all of the relevant data (years, countries and attendance). I had to use the .split('\t') method to create the separate arrays.
 
 ## Problems
 
