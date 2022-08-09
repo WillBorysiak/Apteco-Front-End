@@ -1,3 +1,4 @@
+import { DataInterface } from '../models/data-model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  getJSON(): Observable<any> {
-    return this.http.get('assets/cubeResults.json');
+  getData(): Observable<DataInterface> {
+    return this.http.get<DataInterface>('assets/cubeResults.json');
   }
 }

@@ -1,9 +1,14 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  ViewChild
+  } from '@angular/core';
+import { DataInterface } from 'src/app/models/data-model';
 import { DataService } from 'src/app/services/data.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Observable } from 'rxjs';
 
 export interface UserData {
   id: string;
@@ -55,6 +60,7 @@ const NAMES: string[] = [
   templateUrl: 'table.component.html',
 })
 export class TableComponent implements AfterViewInit {
+  @Input() data!: DataInterface;
   displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
   dataSource: MatTableDataSource<UserData>;
 
@@ -70,9 +76,7 @@ export class TableComponent implements AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.dataService.getJSON().subscribe((response) => {
-      console.log(response);
-    });
+    console.log(this.data);
   }
 
   ngAfterViewInit(): void {

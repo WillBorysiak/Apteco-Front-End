@@ -40,7 +40,15 @@ This will be a log of all the actions / steps I have taken to complete the proje
 - Now I have gotten a basic Angular template, I am going to create a basic user interface comprising of the layout styles and the hero component.
 - Now that the banner and layout is sorted, its time to import the MatTable to the project and render the skeleton of the table.
 - I have now created a fully operational table component using the correct Material modules, my next tasks is working out how to add the JSON data to the table.
+- I have used an angular service to get the data from the static JSON file and supply that data to my app.component.ts.
+- I then used the @Input decorator to pass the data into the table component so I can access/process it into the mat-table.
 
 ## Problems
 
 - The first problem I faced was getting the table to render without errors. I had to search through the error log and work out which modules I needed such as MatPaginatorModule, MatInputModule, MatSortModule etc to import. The angular API documentation assisted me with this, then I could correctly add them to the imports array and the table worked perfectly.
+
+- The second problem I faced was receiving inside the table component as when I tried to log the @Input value, it simply returned undefined. After reading Angular documentation I realised that I was logged on ngOnInit which wouldnt work because the component was rendering THEN receiving the data. I then conditionally rendered the component using the \*ngIf="data" property and then the data was present before my log.
+
+## Notes
+
+Fiddle with data in material or use custom headers
