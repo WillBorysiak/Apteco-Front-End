@@ -11,47 +11,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
-
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
-
 /**
  * @title Data table with sorting, pagination, and filtering.
  */
@@ -60,25 +19,18 @@ const NAMES: string[] = [
   styleUrls: ['table.component.scss'],
   templateUrl: 'table.component.html',
 })
-export class TableComponent implements OnChanges, OnInit {
+export class TableComponent implements OnInit {
   // Variables
   @Input() data!: DataInterface;
   displayedColumns: string[] = [];
-  dataSource: MatTableDataSource<UserData>;
+  dataSource: MatTableDataSource<DataInterface>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor() {
-    // Create 100 users
-    const users = Array.from({ length: 100 }, (_, k) =>
-      this.createNewUser(k + 1)
-    );
-
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+    this.dataSource = new MatTableDataSource();
   }
-  ngOnChanges(): void {}
 
   ngOnInit(): void {
     this.displayedColumns = ['Country', ...this.getYears()];
@@ -99,21 +51,7 @@ export class TableComponent implements OnChanges, OnInit {
     }
   }
 
-  /** Builds and returns a new User. */
-  createNewUser(id: number): UserData {
-    const name =
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-      ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-      '.';
-
-    return {
-      id: id.toString(),
-      name: name,
-      progress: Math.round(Math.random() * 100).toString(),
-      fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-    };
-  }
+  // Data Functions
 
   getYears() {
     const yearsArray =

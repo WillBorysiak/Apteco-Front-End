@@ -2,6 +2,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { DataService } from './services/data.service';
+import { FormsModule } from '@angular/forms';
 import { HeroComponent } from './components/hero/hero.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
@@ -11,6 +12,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { TableComponent } from './components/table/table.component';
 
 @NgModule({
@@ -25,6 +27,8 @@ import { TableComponent } from './components/table/table.component';
     MatSortModule,
     MatCardModule,
     HttpClientModule,
+    NgxSpinnerModule,
+    FormsModule,
   ],
   providers: [DataService],
   bootstrap: [AppComponent],
