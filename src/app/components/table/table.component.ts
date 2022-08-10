@@ -123,18 +123,32 @@ export class TableComponent implements OnChanges, OnInit {
   createTableData() {
     // Years Array
     const years = this.getYears();
-    console.log(years);
+
     // Countries Array
     const countries = this.data.dimensionResults[0].headerDescriptions
       .split('\t')
       .map((country) => {
-        return { Country: country };
+        return { Country: country } as any;
       });
-    console.log(countries);
+
     // Travel Data Array
     const travelData = this.data.measureResults[0].rows.map((row) => {
       return row.split('\t');
     });
-    console.log(travelData);
+
+    // Data Source Calculation
+
+    // This puts all of the above data into a format that the Material table will accept.
+    // First loop over the travel data and get the rows and index.
+    travelData.forEach((row, yearIndex) => {
+      // Every loop you get each year thats related to the data.
+      const year = years[yearIndex];
+      // Loop over each row of values
+      row.forEach((value, index) => {
+        // Using the index you go into each country and then the year and add the value as a number.
+        countries[index][year] = +value;
+      });
+    });
+    console.log(countries);
   }
 }
