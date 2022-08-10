@@ -63,7 +63,7 @@ const NAMES: string[] = [
 export class TableComponent implements OnChanges, OnInit {
   // Variables
   @Input() data!: DataInterface;
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
+  displayedColumns: string[] = [];
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -81,6 +81,7 @@ export class TableComponent implements OnChanges, OnInit {
   ngOnChanges(): void {}
 
   ngOnInit(): void {
+    this.displayedColumns = ['Country', ...this.getYears()];
     this.createTableData();
   }
 
@@ -149,6 +150,6 @@ export class TableComponent implements OnChanges, OnInit {
         countries[index][year] = +value;
       });
     });
-    console.log(countries);
+    this.dataSource.data = countries;
   }
 }

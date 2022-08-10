@@ -44,6 +44,7 @@ This will be a log of all the actions / steps I have taken to complete the proje
 - I then used the @Input decorator to pass the data into the table component so I can access/process it into the mat-table.
 - Once the data was present I could run a function called createTableData() which contains all of the relevant data (years, countries and attendance). I had to use the .split('\t') method to create the separate arrays.
 - I then ran two .forEach() loops to interate over the data and create an object that can be fed into the Material data source.
+- Once the data was created, I added it to the datasource and changed the displayed column names to fit my countries/years. The HTML file also had to be altered to display the new data.
 
 ## Problems
 
@@ -51,6 +52,8 @@ This will be a log of all the actions / steps I have taken to complete the proje
 
 - The second problem I faced was receiving data inside the table component as when I tried to log the @Input value, it simply returned undefined. After reading Angular documentation I realised that I was logged on OnInit which wouldnt work because the component was rendering THEN receiving the data. I then conditionally rendered the component using the \*ngIf="data" property and then the data was present before my console log.
 
+- The third problem I had was converting the cube data into a format that the Material table would accept. It required an object with all the correct properties and the data supplied was in separated arrays. I had to loop over the separated arrays and push the values into the appropriate year/country.
+
 ## Notes
 
-Fiddle with data in material or use custom headers
+Fiddle with data in material or use custom data / HTML template.
