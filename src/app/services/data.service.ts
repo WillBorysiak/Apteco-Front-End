@@ -14,7 +14,7 @@ export class DataService {
     let httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       accept: 'application/json',
-      Authorization: `Bearer + ${process.env.NG_APP_ACCESS_TOKEN!}`,
+      Authorization: 'Bearer',
     });
 
     const httpPostRequest = this.http.post<DataInterface>(
@@ -23,6 +23,6 @@ export class DataService {
       { headers: httpHeaders }
     );
 
-    return httpPostRequest;
+    return this.http.get<DataInterface>('assets/cubeResults.json');
   }
 }
