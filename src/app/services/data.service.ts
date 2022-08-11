@@ -1,5 +1,6 @@
 import { DataInterface } from '../models/data-model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { httpPostBody } from './httpPostBody';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -10,6 +11,18 @@ export class DataService {
   constructor(private http: HttpClient) {}
 
   getData(): Observable<DataInterface> {
-    return this.http.get<DataInterface>('assets/cubeResults.json');
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      accept: 'application/json',
+      Authorization: `Bearer + ${process.env.NG_APP_ACCESS_TOKEN!}`,
+    });
+
+    const httpPostRequest = this.http.post<DataInterface>(
+      'https://www.tealgreenholidays.co.uk/OrbitAPI/CloudDemo/Cubes/CloudDemo/CalculateSync',
+      httpPostBody,
+      { headers: httpHeaders }
+    );
+
+    return httpPostRequest;
   }
 }

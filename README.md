@@ -45,6 +45,9 @@ This will be a log of all the actions / steps I have taken to complete the proje
 - Once the data was present I could run a function called createTableData() which contains all of the relevant data (years, countries and attendance). I had to use the .split('\t') method to create the separate arrays.
 - I then ran two .forEach() loops to interate over the data and create an object that can be fed into the Material data source.
 - Once the data was created, I added it to the datasource and changed the displayed column names to fit my countries/years. The HTML file also had to be altered to display the new data.
+- My next task was to call the API for the data however I needed to generate an auth token and test the endpoint beforehand. I used Postman to send the POST request using the headers provided and putting my UserLogin / Password inside the request body. I received a JSON object with my accessToken inside.
+- Once I had the accessToken I could make a request to the OrbitAPI to get my holiday data back. Again I used Postman to supply headers and body to ensure I would get the corrected response. The response I got was a exact copy of the JSON file used prior and now I have to use the HTTPClient to send the same request.
+- I then replicated the HTTP POST request in my angular service using the HttpHeaders object with the correct request body imported from a JSON file.
 
 ## Problems
 
