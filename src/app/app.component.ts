@@ -11,8 +11,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class AppComponent {
   data!: DataInterface;
 
-  spinnerType!: string;
-
   constructor(
     private dataService: DataService,
     private spinnerService: NgxSpinnerService

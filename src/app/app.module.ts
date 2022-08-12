@@ -14,9 +14,10 @@ import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TableComponent } from './components/table/table.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, HeroComponent, TableComponent],
+  declarations: [AppComponent, HeroComponent, TableComponent, FooterComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

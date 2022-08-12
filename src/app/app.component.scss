@@ -1,11 +1,18 @@
-.container {
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin-top: 1rem;
   margin-right: auto;
   margin-left: auto;
   max-width: 95vw;
+  height: 100%;
 }
 
-.spinner-container {
+.table {
   position: relative;
-  margin: 25vh;
+}
+
+.footer {
+  margin-top: 2rem;
 }

@@ -1,16 +1,17 @@
-<div class="container">
+<div class="page-container">
   <hero></hero>
-  <data-table *ngIf="data" [data]="data"></data-table>
-
-  <div class="spinner-container">
-    <ngx-spinner
-      *ngIf="data === undefined"
-      bdColor="rgba(0, 0, 0, 0.8)"
-      size="large"
-      color="#fff"
-      type="ball-spin-fade"
-      [fullScreen]="false"
-      ><p style="color: white"></p
-    ></ngx-spinner>
+  <div class="table">
+    <data-table *ngIf="data" [data]="data"></data-table>
+    <div *ngIf="data === undefined">
+      <ngx-spinner
+        size="large"
+        color="#fff"
+        type="ball-spin-fade"
+        [fullScreen]="false"
+      ></ngx-spinner>
+    </div>
+  </div>
+  <div class="footer">
+    <footer></footer>
   </div>
 </div>
