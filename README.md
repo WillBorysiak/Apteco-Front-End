@@ -12,6 +12,21 @@
 - The data is pulled in using an Angular service and passed into the a Material table component.
 - I initially used React (NextJS) however decided that Angular was more fitting both for my own development and for Apteco's needs.
 
+<div align="center">
+  <img src="/src/assets/images/readme/angular.svg" alt="HTML" height="50"/>
+  <p align="center">Angular</p>
+</div>
+
+<div align="center">
+  <img src="/src/assets/images/readme/sass.svg" alt="HTML" height="50"/>
+  <p align="center">SASS</p>
+</div>
+
+<div align="center">
+  <img src="/src/assets/images/readme/material.svg" alt="HTML" height="50"/>
+  <p align="center">Angular Material</p>
+</div>
+
 ## Planning / Thought Process
 
 My first step was to read through the github repo and understand exactly what is asked of me.
@@ -48,6 +63,7 @@ This will be a log of all the actions / steps I have taken to complete the proje
 - My next task was to call the API for the data however I needed to generate an auth token and test the endpoint beforehand. I used Postman to send the POST request using the headers provided and putting my UserLogin / Password inside the request body. I received a JSON object with my accessToken inside.
 - Once I had the accessToken I could make a request to the OrbitAPI to get my holiday data back. Again I used Postman to supply headers and body to ensure I would get the corrected response. The response I got was a exact copy of the JSON file used prior and now I have to use the HTTPClient to send the same request.
 - I then replicated the HTTP POST request in my angular service using the HttpHeaders object with the correct request body imported from a JSON file.
+- After realising that Angular can't really use process.env for my access token, I had to build a backend using Express (learnt from scratch as well). I used the backend to POST to the Apteco endpoint and return the data. Then I used a GET method to provide this data into my Angular app.
 
 ## Problems
 
@@ -56,6 +72,8 @@ This will be a log of all the actions / steps I have taken to complete the proje
 - The second problem I faced was receiving data inside the table component as when I tried to log the @Input value, it simply returned undefined. After reading Angular documentation I realised that I was logged on OnInit which wouldnt work because the component was rendering THEN receiving the data. I then conditionally rendered the component using the \*ngIf="data" property and then the data was present before my console log.
 
 - The third problem I had was converting the cube data into a format that the Material table would accept. It required an object with all the correct properties and the data supplied was in separated arrays. I had to loop over the separated arrays and push the values into the appropriate year/country.
+
+- The fourth problem I had was calling the Apteco API without revealing my access token. In React I can just use process.env and supply the token via Vercel however angular doesn't support this so I had to use a serverless function instead. The serverless function uses Axios to make the POST request and return the data. With this method I was able to store the token as a variable inside Vercel thus avoiding its public exposure.
 
 ## Notes
 

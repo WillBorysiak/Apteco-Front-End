@@ -1,6 +1,5 @@
 import { DataInterface } from '../models/data-model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { httpPostBody } from './httpPostBody';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -10,19 +9,10 @@ import { Observable } from 'rxjs';
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  getData(): Observable<DataInterface> {
-    let httpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      accept: 'application/json',
-      Authorization: 'Bearer',
-    });
-
-    const httpPostRequest = this.http.post<DataInterface>(
-      'https://www.tealgreenholidays.co.uk/OrbitAPI/CloudDemo/Cubes/CloudDemo/CalculateSync',
-      httpPostBody,
-      { headers: httpHeaders }
+  getData(): Observable<any> {
+    const httpGetRequest = this.http.get(
+      'https://apteco-front-end-project.vercel.app/api/data'
     );
-
-    return this.http.get<DataInterface>('assets/cubeResults.json');
+    return httpGetRequest;
   }
 }
