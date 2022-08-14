@@ -1,8 +1,8 @@
 <div class="page-container">
-  <hero></hero>
+  <hero @fadeInlayout></hero>
   <div class="table">
-    <data-table *ngIf="data" [data]="data"></data-table>
-    <div *ngIf="data === undefined">
+    <data-table @fadeInTable *ngIf="data" [data]="data"></data-table>
+    <div @fadeInTable *ngIf="data === undefined">
       <ngx-spinner
         size="large"
         color="#fff"
@@ -12,6 +12,6 @@
     </div>
   </div>
   <div class="footer">
-    <footer></footer>
+    <footer @fadeInlayout></footer>
   </div>
 </div>
